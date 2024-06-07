@@ -1,15 +1,16 @@
 package com.example.sprint2.service;
 
-import com.example.sprint2.dto.IBlogDto;
+import com.example.sprint2.dto.imp.IBlogDto;
 import com.example.sprint2.model.Favorite;
 import com.example.sprint2.repository.IFavoriteRepository;
+import com.example.sprint2.service.imp.IFavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FavoriteService implements IFavoriteService{
+public class FavoriteService implements IFavoriteService {
     @Autowired
     private IFavoriteRepository favoriteRepository;
 

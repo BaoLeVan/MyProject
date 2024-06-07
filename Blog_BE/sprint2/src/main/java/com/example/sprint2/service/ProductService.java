@@ -1,10 +1,11 @@
 package com.example.sprint2.service;
 
-import com.example.sprint2.dto.IProductDto;
-import com.example.sprint2.dto.NewIProductDto;
+import com.example.sprint2.dto.imp.IProductDto;
+import com.example.sprint2.dto.imp.NewIProductDto;
 import com.example.sprint2.dto.ProductDto;
 import com.example.sprint2.model.Product;
 import com.example.sprint2.repository.IProductRepository;
+import com.example.sprint2.service.imp.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

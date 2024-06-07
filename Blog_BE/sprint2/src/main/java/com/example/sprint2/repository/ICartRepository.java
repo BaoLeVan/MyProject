@@ -1,7 +1,6 @@
 package com.example.sprint2.repository;
 
-import com.example.sprint2.dto.ICartDto;
-import com.example.sprint2.dto.IProductDto;
+import com.example.sprint2.dto.imp.ICartDto;
 import com.example.sprint2.model.Cart;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -13,8 +12,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Repository

@@ -1,8 +1,7 @@
-package com.example.sprint2.service;
+package com.example.sprint2.service.imp;
 
-import com.example.sprint2.dto.IProductDto;
-import com.example.sprint2.dto.IUserDto;
-import com.example.sprint2.model.Product;
+import com.example.sprint2.dto.imp.IProductDto;
+import com.example.sprint2.dto.imp.IUserDto;
 import com.example.sprint2.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

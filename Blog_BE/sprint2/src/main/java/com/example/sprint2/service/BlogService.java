@@ -1,9 +1,11 @@
 package com.example.sprint2.service;
 
 import com.example.sprint2.dto.BlogDTO;
-import com.example.sprint2.dto.IBlogDto;
+import com.example.sprint2.dto.imp.IBlogDto;
+import com.example.sprint2.exp.BaseException;
 import com.example.sprint2.model.Blog;
 import com.example.sprint2.repository.IBlogRepository;
+import com.example.sprint2.service.imp.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BlogService implements IBlogService{
+public class BlogService implements IBlogService {
     @Autowired
     private IBlogRepository blogRepository;
 
@@ -25,7 +27,13 @@ public class BlogService implements IBlogService{
 
     @Override
     public Optional<IBlogDto> findByBlogId(Long id) {
-        return blogRepository.findByBlogId(id);
+        Optional<IBlogDto> blog = blogRepository.findByBlogId(id);
+        if (blog.isEmpty()) {
+            blogRepository.updateViewer(blog.get().getId(), blog.get().getViewer()+1);
+            return blog;
+        }else {
+            throw new BaseException("Not Found Blog By Id");
+        }
     }
 
     @Override
@@ -35,7 +43,13 @@ public class BlogService implements IBlogService{
 
     @Override
     public Page<IBlogDto> pageListBlog(Pageable pageable) {
-        return blogRepository.pageListBlog(pageable);
+        Page<IBlogDto> list;
+        try{
+            list = blogRepository.pageListBlog(pageable);
+        }catch (Exception e){
+            throw new BaseException("No List Blog");
+        }
+        return list;
     }
 
     @Override
@@ -45,17 +59,34 @@ public class BlogService implements IBlogService{
 
     @Override
     public List<IBlogDto> getBlogHighView() {
-        return blogRepository.getBlogHighView();
+        List<IBlogDto> list = blogRepository.getBlogHighView();
+        if (list == null) {
+            throw new BaseException("Not Found Blog High View");
+        }else {
+            return list;
+        }
     }
 
     @Override
     public List<IBlogDto> listBlogCurrent() {
-        return blogRepository.listBlogCurrent();
+        List<IBlogDto> list;
+        try{
+            list = blogRepository.listBlogCurrent();
+        }catch (Exception e){
+            throw new BaseException("Not Blog Current");
+        }
+        return list;
     }
 
     @Override
     public Page<IBlogDto> findBlogByTopic(Pageable pageable, Long id) {
-        return blogRepository.findBlogByTopic(pageable,id);
+        Page<IBlogDto> list;
+        try {
+            list = blogRepository.findBlogByTopic(pageable, id);
+        }catch (Exception e){
+            throw new BaseException("Not Found Blog Topic");
+        }
+        return list;
     }
 
     @Override

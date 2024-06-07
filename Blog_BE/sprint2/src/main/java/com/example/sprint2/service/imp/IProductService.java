@@ -1,7 +1,7 @@
-package com.example.sprint2.service;
+package com.example.sprint2.service.imp;
 
-import com.example.sprint2.dto.IProductDto;
-import com.example.sprint2.dto.NewIProductDto;
+import com.example.sprint2.dto.imp.IProductDto;
+import com.example.sprint2.dto.imp.NewIProductDto;
 import com.example.sprint2.dto.ProductDto;
 import com.example.sprint2.model.Product;
 import org.springframework.data.domain.Page;

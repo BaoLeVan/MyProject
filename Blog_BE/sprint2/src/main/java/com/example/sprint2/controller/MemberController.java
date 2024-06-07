@@ -1,7 +1,7 @@
 package com.example.sprint2.controller;
 
 import com.example.sprint2.model.Blog;
-import com.example.sprint2.service.IBlogService;
+import com.example.sprint2.service.imp.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,13 +1,12 @@
 package com.example.sprint2.controller;
 
-import com.example.sprint2.dto.IBlogDto;
-import com.example.sprint2.dto.NewIProductDto;
-import com.example.sprint2.dto.ProductDto;
+import com.example.sprint2.dto.imp.IBlogDto;
+import com.example.sprint2.dto.imp.NewIProductDto;
 import com.example.sprint2.model.Product;
 import com.example.sprint2.model.TypeProduct;
-import com.example.sprint2.service.IBlogService;
-import com.example.sprint2.service.IProductService;
-import com.example.sprint2.service.ITypeProductService;
+import com.example.sprint2.service.imp.IBlogService;
+import com.example.sprint2.service.imp.IProductService;
+import com.example.sprint2.service.imp.ITypeProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

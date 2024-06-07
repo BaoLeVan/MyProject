@@ -1,13 +1,12 @@
 package com.example.sprint2.controller;
 
 import com.example.sprint2.config.ConfigVNP;
-import com.example.sprint2.dto.ICartDto;
-import com.example.sprint2.dto.IProductDto;
+import com.example.sprint2.dto.imp.IProductDto;
 import com.example.sprint2.model.Product;
 import com.example.sprint2.model.User;
-import com.example.sprint2.service.ICartService;
-import com.example.sprint2.service.IProductService;
-import com.example.sprint2.service.IUserService;
+import com.example.sprint2.service.imp.ICartService;
+import com.example.sprint2.service.imp.IProductService;
+import com.example.sprint2.service.imp.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

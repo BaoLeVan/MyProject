@@ -1,21 +1,19 @@
 package com.example.sprint2.service;
 
-import com.example.sprint2.dto.ICartDto;
-import com.example.sprint2.dto.IProductDto;
+import com.example.sprint2.dto.imp.ICartDto;
 import com.example.sprint2.model.Cart;
 import com.example.sprint2.repository.ICartRepository;
+import com.example.sprint2.service.imp.ICartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Service
-public class CartService implements ICartService{
+public class CartService implements ICartService {
 
     @Autowired
     private ICartRepository cartRepository;

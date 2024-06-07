@@ -2,6 +2,7 @@ package com.example.sprint2.service;
 
 import com.example.sprint2.model.TypeProduct;
 import com.example.sprint2.repository.ITypeProductRepository;
+import com.example.sprint2.service.imp.ITypeProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

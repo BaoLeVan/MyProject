@@ -1,11 +1,17 @@
 package com.example.sprint2.controller;
 
 import com.example.sprint2.dto.*;
+import com.example.sprint2.dto.imp.IBlogDto;
+import com.example.sprint2.dto.imp.ICartDto;
+import com.example.sprint2.dto.imp.IProductDto;
+import com.example.sprint2.dto.imp.IUserDto;
 import com.example.sprint2.model.Product;
 import com.example.sprint2.model.User;
 import com.example.sprint2.service.*;
+import com.example.sprint2.service.imp.IBlogService;
+import com.example.sprint2.service.imp.ICartService;
+import com.example.sprint2.service.imp.IUserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,6 +1,6 @@
 package com.example.sprint2.repository;
 
-import com.example.sprint2.dto.IBlogDto;
+import com.example.sprint2.dto.imp.IBlogDto;
 import com.example.sprint2.model.Favorite;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;

@@ -1,4 +1,4 @@
-package com.example.sprint2.dto;
+package com.example.sprint2.dto.imp;
 
 import java.time.LocalDateTime;
 

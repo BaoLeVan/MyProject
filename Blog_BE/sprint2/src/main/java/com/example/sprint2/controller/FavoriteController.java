@@ -1,12 +1,10 @@
 package com.example.sprint2.controller;
 
-import com.example.sprint2.dto.BlogDTO;
 import com.example.sprint2.dto.FavoriteDto;
-import com.example.sprint2.dto.IBlogDto;
-import com.example.sprint2.model.Blog;
+import com.example.sprint2.dto.imp.IBlogDto;
 import com.example.sprint2.model.Favorite;
-import com.example.sprint2.service.IBlogService;
-import com.example.sprint2.service.IFavoriteService;
+import com.example.sprint2.service.imp.IBlogService;
+import com.example.sprint2.service.imp.IFavoriteService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 import java.util.Optional;
 
 @RestController

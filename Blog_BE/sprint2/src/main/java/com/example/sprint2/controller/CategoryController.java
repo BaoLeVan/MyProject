@@ -1,7 +1,7 @@
 package com.example.sprint2.controller;
 
 import com.example.sprint2.model.Category;
-import com.example.sprint2.service.ICategoryService;
+import com.example.sprint2.service.imp.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

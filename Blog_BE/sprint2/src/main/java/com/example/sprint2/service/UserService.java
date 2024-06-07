@@ -1,11 +1,11 @@
 package com.example.sprint2.service;
 
 import com.example.sprint2.config.JwtTokenUtil;
-import com.example.sprint2.dto.IProductDto;
-import com.example.sprint2.dto.IUserDto;
-import com.example.sprint2.model.Product;
+import com.example.sprint2.dto.imp.IProductDto;
+import com.example.sprint2.dto.imp.IUserDto;
 import com.example.sprint2.model.User;
 import com.example.sprint2.repository.IUserRepository;
+import com.example.sprint2.service.imp.IUserService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;

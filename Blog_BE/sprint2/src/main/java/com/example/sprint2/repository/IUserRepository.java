@@ -1,6 +1,6 @@
 package com.example.sprint2.repository;
 
-import com.example.sprint2.dto.IUserDto;
+import com.example.sprint2.dto.imp.IUserDto;
 import com.example.sprint2.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;

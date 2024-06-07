@@ -1,9 +1,7 @@
 package com.example.sprint2.config;
 
-import com.example.sprint2.model.Role;
 import com.example.sprint2.model.User;
 import com.example.sprint2.repository.IUserRepository;
-import com.example.sprint2.service.IUserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -18,7 +16,6 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Function;
 
 @Component

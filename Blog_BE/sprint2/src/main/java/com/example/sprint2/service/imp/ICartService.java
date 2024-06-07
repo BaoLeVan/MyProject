@@ -1,15 +1,11 @@
-package com.example.sprint2.service;
+package com.example.sprint2.service.imp;
 
-import com.example.sprint2.dto.ICartDto;
-import com.example.sprint2.dto.IProductDto;
+import com.example.sprint2.dto.imp.ICartDto;
 import com.example.sprint2.model.Cart;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public interface ICartService {
