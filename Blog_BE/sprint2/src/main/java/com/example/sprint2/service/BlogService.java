@@ -38,7 +38,13 @@ public class BlogService implements IBlogService {
 
     @Override
     public Page<IBlogDto> getAllBlogSearch(Pageable pageable, Long id) {
-        return blogRepository.getAllBlogSearch(pageable,id);
+        Page<IBlogDto> list;
+        try {
+            list = blogRepository.getAllBlogSearch(pageable,id);
+        }catch (Exception e){
+            throw new BaseException("Not Found Blog");
+        }
+        return list;
     }
 
     @Override
@@ -106,7 +112,13 @@ public class BlogService implements IBlogService {
 
     @Override
     public Page<IBlogDto> manageBlog(Pageable pageable, Long idCate) {
-        return blogRepository.manageBlog(pageable,idCate);
+        Page<IBlogDto> list;
+        try {
+            list = blogRepository.manageBlog(pageable,idCate);
+        }catch (Exception e){
+            throw new BaseException("Not Blog");
+        }
+        return list;
     }
 
     @Override
@@ -121,12 +133,24 @@ public class BlogService implements IBlogService {
 
     @Override
     public List<IBlogDto> listBlogForProduct() {
-        return blogRepository.listBlogForProduct();
+        List<IBlogDto> list;
+        try{
+            list = blogRepository.listBlogForProduct();
+        }catch (Exception e){
+            throw new BaseException("Not Blog Current");
+        }
+        return list;
     }
 
     @Override
     public Page<Blog> manageBlogUser(Pageable pageable, Long idUser) {
-        return blogRepository.manageBlogUser(pageable,idUser);
+        Page<Blog> list;
+        try {
+            list = blogRepository.manageBlogUser(pageable,idUser);
+        }catch (Exception e){
+            throw new BaseException("Not Product");
+        }
+        return list;
     }
 
 }

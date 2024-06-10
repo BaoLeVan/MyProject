@@ -1,6 +1,7 @@
 package com.example.sprint2.service;
 
 import com.example.sprint2.dto.imp.ICartDto;
+import com.example.sprint2.exp.BaseException;
 import com.example.sprint2.model.Cart;
 import com.example.sprint2.repository.ICartRepository;
 import com.example.sprint2.service.imp.ICartService;
@@ -39,12 +40,24 @@ public class CartService implements ICartService {
 
     @Override
     public List<ICartDto> listCart(Long idUser) {
-        return cartRepository.listCart(idUser);
+        List<ICartDto> list;
+        try {
+            list = cartRepository.listCart(idUser);
+        }catch (Exception e){
+            throw new BaseException("Not List Product In Cart");
+        }
+        return list;
     }
 
     @Override
     public Long totalPrice(Long idUser) {
-        return cartRepository.totalPrice(idUser);
+        Long count;
+        try {
+            count = cartRepository.totalPrice(idUser);
+        }catch (Exception e){
+            throw new BaseException("Not Total Price");
+        }
+        return count;
     }
 
     @Override
@@ -54,7 +67,13 @@ public class CartService implements ICartService {
 
     @Override
     public Long countCart(Long idUser) {
-        return cartRepository.countCart(idUser);
+        Long count;
+        try {
+            count = cartRepository.countCart(idUser);
+        }catch (Exception e){
+            throw new BaseException("Not Count In Cart");
+        }
+        return count;
     }
 
     @Override
@@ -69,7 +88,13 @@ public class CartService implements ICartService {
 
     @Override
     public Page<ICartDto> listOrderForAdmin(Pageable pageable) {
-        return cartRepository.listOrderForAdmin(pageable);
+        Page<ICartDto> list;
+        try {
+            list = cartRepository.listOrderForAdmin(pageable);
+        }catch (Exception e){
+            throw new BaseException("Not List Order");
+        }
+        return list;
     }
 
     @Override

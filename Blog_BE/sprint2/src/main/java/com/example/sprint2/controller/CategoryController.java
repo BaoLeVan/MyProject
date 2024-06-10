@@ -21,10 +21,6 @@ public class CategoryController {
 
     @GetMapping
     public ResponseEntity<?> getAllCategory() {
-        List<Category> list = categoryService.getAllCategory();
-        if (list == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(list, HttpStatus.OK);
+        return new ResponseEntity<>(categoryService.getAllCategory(), HttpStatus.OK);
     }
 }

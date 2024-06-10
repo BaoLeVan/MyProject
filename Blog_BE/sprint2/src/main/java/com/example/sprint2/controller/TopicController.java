@@ -16,10 +16,6 @@ public class TopicController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getAllTopic(@PathVariable Long id){
-        Iterable<Topic> list = topicService.getAllTopicByIdCate(id);
-        if (list == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(list,HttpStatus.OK);
+        return new ResponseEntity<>(topicService.getAllTopicByIdCate(id),HttpStatus.OK);
     }
 }

@@ -56,13 +56,11 @@ public class FavoriteController {
     public ResponseEntity<?> getAllFavorite(@RequestParam(name = "page") int page,
                                             @RequestParam(name = "idUser") Long id) {
         Pageable pageable = PageRequest.of(page, 6);
-        Page<IBlogDto> list = favoriteService.listFavorite(pageable, id);
-        return new ResponseEntity<>(list, HttpStatus.OK);
+        return new ResponseEntity<>(favoriteService.listFavorite(pageable, id), HttpStatus.OK);
     }
 
     @GetMapping("/checkFavorite")
     public ResponseEntity<?> checkFavoriteForUser(@RequestParam Long idUser, @RequestParam Long idBlog){
-        Long favorite = favoriteService.checkFavoriteForUser(idUser, idBlog);
-        return new ResponseEntity<>(favorite,HttpStatus.OK);
+        return new ResponseEntity<>(favoriteService.checkFavoriteForUser(idUser, idBlog),HttpStatus.OK);
     }
 }

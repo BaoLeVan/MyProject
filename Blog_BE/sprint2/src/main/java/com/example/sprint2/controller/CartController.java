@@ -32,8 +32,7 @@ public class CartController {
 
     @GetMapping("/{idUser}")
     public ResponseEntity<?> listProductInCart(@PathVariable Long idUser){
-        List<ICartDto> listCart = cartService.listCart(idUser);
-        return new ResponseEntity<>(listCart, HttpStatus.OK);
+        return new ResponseEntity<>(cartService.listCart(idUser), HttpStatus.OK);
     }
 
     @PostMapping("/minus")
@@ -52,14 +51,12 @@ public class CartController {
 
     @GetMapping("/totalPrice/{idUser}")
     public ResponseEntity<?> getTotalPrice(@PathVariable Long idUser){
-        Long total = cartService.totalPrice(idUser);
-        return new ResponseEntity<>(total,HttpStatus.OK);
+        return new ResponseEntity<>(cartService.totalPrice(idUser),HttpStatus.OK);
     }
 
     @GetMapping("/count/{idUser}")
     public ResponseEntity<?> getCountCart(@PathVariable Long idUser){
-        Long count = cartService.countCart(idUser);
-        return new ResponseEntity<>(count,HttpStatus.OK);
+        return new ResponseEntity<>(cartService.countCart(idUser),HttpStatus.OK);
     }
 
 

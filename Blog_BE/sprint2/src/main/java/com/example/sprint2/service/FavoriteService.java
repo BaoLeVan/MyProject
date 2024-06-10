@@ -1,6 +1,7 @@
 package com.example.sprint2.service;
 
 import com.example.sprint2.dto.imp.IBlogDto;
+import com.example.sprint2.exp.BaseException;
 import com.example.sprint2.model.Favorite;
 import com.example.sprint2.repository.IFavoriteRepository;
 import com.example.sprint2.service.imp.IFavoriteService;
@@ -36,11 +37,23 @@ public class FavoriteService implements IFavoriteService {
 
     @Override
     public Page<IBlogDto> listFavorite(Pageable pageable, Long idUser) {
-        return favoriteRepository.listFavorite(pageable,idUser);
+        Page<IBlogDto> list;
+        try {
+            list = favoriteRepository.listFavorite(pageable,idUser);
+        }catch (Exception e){
+            throw new BaseException("Not Favorite Blog");
+        }
+        return list;
     }
 
     @Override
     public Long checkFavoriteForUser(Long idUser, Long idBlog) {
-        return favoriteRepository.checkFavoriteForUser(idUser,idBlog);
+        Long favorite;
+        try {
+            favorite =favoriteRepository.checkFavoriteForUser(idUser,idBlog);
+        }catch (Exception e){
+            throw new BaseException("Not Fount Favorite of User");
+        }
+        return favorite;
     }
 }

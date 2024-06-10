@@ -3,6 +3,7 @@ package com.example.sprint2.service;
 import com.example.sprint2.dto.imp.IProductDto;
 import com.example.sprint2.dto.imp.NewIProductDto;
 import com.example.sprint2.dto.ProductDto;
+import com.example.sprint2.exp.BaseException;
 import com.example.sprint2.model.Product;
 import com.example.sprint2.repository.IProductRepository;
 import com.example.sprint2.service.imp.IProductService;
@@ -22,27 +23,57 @@ public class ProductService implements IProductService {
 
     @Override
     public Page<Product> listProduct(Pageable pageable, Long idType) {
-        return productRepository.listProduct(pageable, idType);
+        Page<Product> list;
+        try {
+            list = productRepository.listProduct(pageable, idType);
+        }catch (Exception e){
+            throw new BaseException("Not Product");
+        }
+        return list;
     }
 
     @Override
     public Page<Product> listAllProduct(Pageable pageable) {
-        return productRepository.listAllProduct(pageable);
+        Page<Product> list;
+        try {
+            list = productRepository.listAllProduct(pageable);
+        }catch (Exception e){
+            throw new BaseException("Not Product");
+        }
+        return list;
     }
 
     @Override
     public Product getProductById(Long id) {
-        return productRepository.getProductById(id);
+        Product product ;
+        try {
+            product = productRepository.getProductById(id);
+        }catch (Exception e) {
+            throw new BaseException("Not Found Product");
+        }
+        return product;
     }
 
     @Override
     public List<Product> listRelated() {
-        return productRepository.listRelated();
+        List<Product> list;
+        try {
+            list = productRepository.listRelated();
+        }catch (Exception e){
+            throw new BaseException("Not Relate Product");
+        }
+        return list;
     }
 
     @Override
     public Page<Product> manageProduct(Pageable pageable, String name) {
-        return productRepository.manageProduct(pageable, "%" + name + "%");
+        Page<Product>  list;
+        try {
+            list = productRepository.manageProduct(pageable, "%" + name + "%");
+        }catch (Exception e){
+            throw new BaseException("Not List Product");
+        }
+        return list;
     }
 
     @Override
@@ -57,7 +88,13 @@ public class ProductService implements IProductService {
 
     @Override
     public Optional<NewIProductDto> getIdForProduct(Long idProduct) {
-        return productRepository.getIdForProduct(idProduct);
+        Optional<NewIProductDto> product;
+        try{
+            product =  productRepository.getIdForProduct(idProduct);
+        }catch (Exception e){
+            throw new BaseException("Not Blog Current");
+        }
+        return product;
     }
 
     @Override
@@ -72,7 +109,13 @@ public class ProductService implements IProductService {
 
     @Override
     public List<IProductDto> getDetailsOrder(Long idUser, Timestamp createOrder) {
-        return productRepository.getDetailsOrder(idUser,createOrder);
+        List<IProductDto> list;
+        try {
+            list = productRepository.getDetailsOrder(idUser,createOrder);
+        }catch (Exception e){
+            throw new BaseException("Not Count In Cart");
+        }
+        return list;
     }
 
     @Override

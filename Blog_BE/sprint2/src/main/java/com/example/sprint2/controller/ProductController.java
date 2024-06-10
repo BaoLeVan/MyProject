@@ -34,53 +34,34 @@ public class ProductController {
                                             @RequestParam(name = "idType",defaultValue = "0") Long idType){
         Pageable pageable = PageRequest.of(page,8);
         if (idType == 0){
-            Page<Product> list = productService.listAllProduct(pageable);
-            return new ResponseEntity<>(list,HttpStatus.OK);
-        }else {
-            Page<Product> list = productService.listProduct(pageable,idType);
-            return new ResponseEntity<>(list,HttpStatus.OK);
+            return new ResponseEntity<>(productService.listAllProduct(pageable),HttpStatus.OK);
         }
+        return new ResponseEntity<>(productService.listProduct(pageable,idType),HttpStatus.OK);
     }
 
     @GetMapping("/detailProduct/{id}")
     public ResponseEntity<?> findProductById(@PathVariable Long id){
-        Product product = productService.getProductById(id);
-        if (product == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(product,HttpStatus.OK);
+        return new ResponseEntity<>(productService.getProductById(id),HttpStatus.OK);
     }
+
     @GetMapping("/related")
     public ResponseEntity<?> listRelated(){
-        List<Product> list = productService.listRelated();
-        return new ResponseEntity<>(list,HttpStatus.OK);
+        return new ResponseEntity<>( productService.listRelated(),HttpStatus.OK);
     }
+
     @GetMapping("/forProduct")
     public ResponseEntity<?> getListProduct(){
-        List<IBlogDto> list = blogService.listBlogForProduct();
-        if (list == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(list,HttpStatus.OK);
+        return new ResponseEntity<>(blogService.listBlogForProduct(),HttpStatus.OK);
     }
 
     @GetMapping("/typeProduct")
     public ResponseEntity<?> getListTypeProduct(){
-        List<TypeProduct> list = typeProductService.getAllByTypeProduct();
-        if (list == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(list,HttpStatus.OK);
+        return new ResponseEntity<>(typeProductService.getAllByTypeProduct(),HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findProductByOptional(@PathVariable Long id){
-        Optional<NewIProductDto> product = productService.getIdForProduct(id);
-        if (product == null){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(product,HttpStatus.OK);
+        return new ResponseEntity<>(productService.getIdForProduct(id),HttpStatus.OK);
     }
-
 
 }

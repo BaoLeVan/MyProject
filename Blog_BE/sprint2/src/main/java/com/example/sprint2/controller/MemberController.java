@@ -21,10 +21,6 @@ public class MemberController {
     public ResponseEntity<?> manageBlog(@RequestParam(name = "page", defaultValue = "0") int page,
                                         @RequestParam(name = "idUser") Long idUser) {
         Pageable pageable = PageRequest.of(page, 5);
-        Page<Blog> list = blogService.manageBlogUser(pageable, idUser);
-        if (list == null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(list, HttpStatus.OK);
+        return new ResponseEntity<>(blogService.manageBlogUser(pageable, idUser), HttpStatus.OK);
     }
 }
