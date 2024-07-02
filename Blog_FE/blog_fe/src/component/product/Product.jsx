@@ -8,6 +8,7 @@ import { addToCart, getCountCart } from '../../service/Cart'
 import MySwal from "sweetalert2";
 import { format } from 'date-fns';
 import ReactPaginate from "react-paginate";
+import useShowObject from '../../hooks/useShowObject';
 
 
 const Product = (props) => {
@@ -15,14 +16,12 @@ const Product = (props) => {
     const [idUser, setIdUser] = useState();
     const [products, setProducts] = useState();
     const [countCartNew, setCountCartNew] = useState();
-    const [blog, setBlog] = useState();
-    const [typeProduct, setTypeProduct] = useState();
     const [idType, setIdType] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(0);
-
+    const { data: typeProduct } = useShowObject(getAllTypeProduct);
+    const { data: blog } = useShowObject(getBlogForProduct);
     
-
     useEffect(() => {
         if(idUser){
             localStorage.removeItem("checkCart")
@@ -30,9 +29,6 @@ const Product = (props) => {
         getAllProduct(0, idType).then(res => {
             setProducts(res.content);
             setTotalPages(res.totalPages)
-        })
-        getAllTypeProduct().then(res => {
-            setTypeProduct(res);
         })
     }, [])
 
@@ -43,12 +39,6 @@ const Product = (props) => {
     const handleId = (id) => {
         setIdUser(id);
     }
-
-    useEffect(() => {
-        getBlogForProduct().then(res => {
-            setBlog(res)
-        })
-    }, [])
 
     const onHandleAddProduct = (e) => {
         if (idUser == null) {
@@ -91,9 +81,7 @@ const Product = (props) => {
     }
 
     function to_slug(str) {
-        // Chuyển hết sang chữ thường
         str = str.toLowerCase();
-        // xóa dấu
         str = str.replace(/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/g, 'a');
         str = str.replace(/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/g, 'e');
         str = str.replace(/(ì|í|ị|ỉ|ĩ)/g, 'i');
@@ -101,20 +89,10 @@ const Product = (props) => {
         str = str.replace(/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/g, 'u');
         str = str.replace(/(ỳ|ý|ỵ|ỷ|ỹ)/g, 'y');
         str = str.replace(/(đ)/g, 'd');
-
-        // Xóa ký tự đặc biệt
         str = str.replace(/([^0-9a-z-\s])/g, '');
-
-        // Xóa khoảng trắng thay bằng ký tự -
         str = str.replace(/(\s+)/g, '-');
-
-        // xóa phần dự - ở đầu
         str = str.replace(/^-+/g, '');
-
-        // xóa phần dư - ở cuối
         str = str.replace(/-+$/g, '');
-
-        // return
         return str;
     }
 
